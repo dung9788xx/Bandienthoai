@@ -5,8 +5,8 @@ import Star from "./Star";
 const Wrapper = styled.div`
 border:1px solid #838586 ;
 border-radius:4px;
-  height: 24em;
-  width: 23%;
+  height: 23em;
+  width: 22%;
   background:#FFFF;
   margin:0.5%;
   box-sizing: border-box;
@@ -15,6 +15,10 @@ const Image = styled.img`
     padding 10px;
     height:95%;
     width:70%;
+    &:hover{
+         height:100%;
+           width:80%;
+    }
 `
 const Center = styled.div`
 text-align:center;
@@ -32,22 +36,25 @@ const Hr = styled.hr`
     color: #DBE3EA ;
     background-color: #DBE3EA; /* Modern Browsers */
     `
+const Row = styled.div`
+    padding-top:3px;
+`
 function Item(props) {
     return (
-        <Wrapper>
+        <Wrapper onClick={()=>props.onClick(props.item.id)}>
             <Center>
-                <Image  src={images.product_icon}  />
+                <Image  src={props.item.images[0]??images.product_icon}  />
             </Center>
             <Hr/>
             <Container>
                 {props.item.name}
-                <div >
+                <Row >
                     <span style={{color:'red'}}>{props.item.price} đ</span>
-                    <span style={{'margin-left':'20px',color:'black','text-decoration':' line-through'}}>{parseFloat(props.item.price)+1000} đ</span>
-                </div>
-                <div>
-                    <Star number={Math.random() * (5 -1)}/>
-                </div>
+                    <span style={{'marginLeft':'20px',color:'#566573','textDecoration':' line-through'}}>{parseFloat(props.item.price)+1000} đ</span>
+                </Row>
+                <Row  >
+                    <Star vote={props.item.total_vote} number={Math.random() * (5 -1)}/>
+                </Row>
             </Container>
         </Wrapper>
     );

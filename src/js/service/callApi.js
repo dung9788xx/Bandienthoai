@@ -1,5 +1,4 @@
 import axios from 'axios';
-import store from "../store";
 
 function callApi(endpoint, method, params, onSuccess, onFail) {
     const header = {

@@ -1,7 +1,8 @@
-import {SET_LIST_PRODUCT} from "../constanst/actionConstanst";
+import {SET_LIST_PRODUCT, SET_PRODUCT_DETAIL} from "../constanst/actionConstanst";
 
 const intState = {
-    listProduct:[]
+    listProduct:[],
+    productDetail:null
 }
 
 const  productReducer = (state = intState, action) => {
@@ -12,7 +13,14 @@ const  productReducer = (state = intState, action) => {
                 listProduct: action.payload
             };
         }
+        case SET_PRODUCT_DETAIL:{
+            return {
+                ...state,
+                productDetail: action.payload
+            }
+        }
+        default: return state;
+
     }
-    return state;
 }
 export default  productReducer;

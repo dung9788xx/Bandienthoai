@@ -1,14 +1,18 @@
 import React from "react";
-import Button from "./js/components/shared/Button";
 import Home from "./js/components/screens/Home";
-import Item from "./js/components/shared/Item";
-
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+import Page404 from "./js/components/screens/Page404";
+import ProductDetail from "./js/components/screens/ProductDetail";
 class Root extends React.Component{
     render(){
         return (
-            <div>
-                <Home></Home>
-            </div>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path='/' component={Home}/>
+                    <Route exact path='/product/:id' component={ProductDetail}/>
+                    <Route component={Page404}/>
+                </Switch>
+            </BrowserRouter>
         )
     }
 }
