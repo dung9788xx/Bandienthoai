@@ -7,7 +7,7 @@ import Header from "../shared/Header";
 import { withRouter } from "react-router-dom";
 const Wrapper = styled.div`
   background:#EAECEE;
-
+    font-size:25px;
   }`
 const Container = styled.div`
     margin:auto;
@@ -17,10 +17,11 @@ const Container = styled.div`
   padding-left:3%;
     flex-wrap: wrap;
     flex-direction:row;
- justify-content: start;
+ justify-content: center;
  &:after {
   content: "";
   flex: 2;
+  justify-content: start;
 }
 `
 const Image = styled.img`

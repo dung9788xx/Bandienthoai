@@ -18,16 +18,18 @@ const ProductName = styled.div`
 `
 const Row = styled.div`
     width:100%;
-    display:flex;
+    max-width:100%;
+    display: flex;
+    flex-wrap: wrap;
 `
 const Column = styled.div`
-    float:left;
     width:${(p)=>p.width ?? 50}%;
+        min-width:360px;
 `
 const Image = styled.img`
-    padding 10px;
-    height:100%;
-    width:90%;
+    padding:10px;
+    width:100%;
+    min-width:360px;
   
 `
 const PriceBannerRounded = styled.div`
@@ -69,6 +71,7 @@ const Text = styled.div`
         
 `
 const Button = styled.button`
+    cursor:pointer;
     background:#fd6e1d;
     color:white;
     border:none;

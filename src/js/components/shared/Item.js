@@ -6,7 +6,7 @@ const Wrapper = styled.div`
 border:1px solid #838586 ;
 border-radius:4px;
   height: 23em;
-  width: 22%;
+  width: 250px;
   background:#FFFF;
   margin:0.5%;
   box-sizing: border-box;
@@ -38,6 +38,7 @@ const Hr = styled.hr`
     `
 const Row = styled.div`
     padding-top:3px;
+    width:50%;
 `
 function Item(props) {
     return (
