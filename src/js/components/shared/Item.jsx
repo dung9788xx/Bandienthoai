@@ -5,22 +5,23 @@ import * as images from '../../images';
 import Star from './Star';
 
 const Wrapper = styled.div`
-border: 1px solid #838586;
-border-radius: 4px;
-height: 15em;
-width: 250px;
+border: 1px solid #eee;
+height: 45rem;
+width: 25em;
 background: #fff;
-margin: 0.5%;
-box-sizing: border-box;
-`;
-const Image = styled.img`
-padding: 10px;
-width: 70%;
-height: 10em;
 
 &:hover {
-  width: 80%;
-  height: 11em;
+  color: green;
+}
+`;
+const Image = styled.img`
+width: 20rem;
+height: 22rem;
+padding-top: 1em;
+
+&:hover {
+  width: 21rem;
+  height: 23rem;
 }
 `;
 const Center = styled.div`
@@ -28,16 +29,9 @@ text-align: center;
 height: 70%;
 `;
 const Container = styled.div`
-color: #2b2f31;
 font-size: 14px;
 font-family: sans-serif;
 margin-left: 10px;
-`;
-const Hr = styled.hr`
-border: none;
-height: 1px;
-color: #dbe3ea;
-background-color: #dbe3ea;
 `;
 const Row = styled.div`
 padding-top: 3px;
@@ -49,7 +43,6 @@ function Item(props) {
       <Center>
         <Image src={props.item.images[0] || images.productIcon} />
       </Center>
-      <Hr />
       <Container>
         {props.item.name}
         <Row>

@@ -6,6 +6,8 @@ import parse from 'html-react-parser';
 import { fetchProductDetail, setProductDetail } from '../../actions/product';
 import Header from '../shared/Header';
 import * as images from '../../images';
+import Row from '../shared/Row';
+import Column from '../shared/Column';
 
 const Wrapper = styled.div`
   margin: auto;
@@ -18,20 +20,9 @@ const Container = styled.div`
 const ProductName = styled.div`
     font-size: 25px;
 `;
-const Row = styled.div`
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-`;
-const Column = styled.div`
-    width: ${(props) => props.width || 50}%;
-    min-width: 360px;
-`;
 const Image = styled.img`
     padding: 10px;
-    width: 100%;
-    min-width: 360px;
+    width: 35em;
 `;
 const PriceBannerRounded = styled.div`
     background: #e74c3c;
@@ -103,7 +94,6 @@ render() {
         <Row>
           <Column>
             <Image src={this.props.productDetail.images[0] ?? images.productIcon} />
-
           </Column>
           <Column>
             <PriceBannerRounded>Mua online ngay giảm sốc !</PriceBannerRounded>

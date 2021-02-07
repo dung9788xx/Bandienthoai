@@ -9,24 +9,19 @@ import Header from '../shared/Header';
 
 const Wrapper = styled.div`
   background: #eaecee;
-  font-size: 25px;
 `;
 const Container = styled.div`
-margin: auto;
-width: 90%;
-background: #eaecee;
 display: flex;
-padding-left: 3%;
 flex-wrap: wrap;
-flex-direction: row;
 justify-content: center;
+align-items: center;
 
 &: after {
-  content: "";
-  flex: 2;
-  justify-content: start;
+  content: '';
+  flex: 0 0 25rem;
 }
 `;
+
 class Home extends React.Component {
   componentDidMount() {
     this.props.fetchListProduct(this.onSuccess, this.onFail);
@@ -50,7 +45,8 @@ class Home extends React.Component {
             <div> <Header /></div>
             <Container>
               {this.props.listProduct && this.props.listProduct.map((product) => (
-                <Item onClick={this.handOnclick} key={product.id} item={product}>aa</Item>)) }
+                <Item onClick={this.handOnclick} key={product.id} item={product} />
+              ))}
             </Container>
           </Wrapper>
         );
