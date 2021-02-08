@@ -5,7 +5,9 @@ import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import { fetchListProduct, setListProduct } from '../../actions/product';
 import Item from '../shared/Item';
-import Header from '../shared/Header';
+import Header from '../shared/Header/Header';
+import ImageBanner from '../shared/ImageBanner';
+import * as images from '../../images';
 
 const Wrapper = styled.div`
   background: #eaecee;
@@ -44,6 +46,7 @@ class Home extends React.Component {
           <Wrapper>
             <div> <Header /></div>
             <Container>
+              <ImageBanner images={images.imageBanner} />
               {this.props.listProduct && this.props.listProduct.map((product) => (
                 <Item onClick={this.handOnclick} key={product.id} item={product} />
               ))}

@@ -6,7 +6,7 @@ const Wrapper = styled.span`
   color: #2b2f31;
 `;
 const Span = styled.span`
-  padding: 2px;
+  padding-right: 2px;
 `;
 function Star(props) {
   const isChecked = (number) => (props.number > number ? { color: 'orange' } : { color: '#A6B4C1' });

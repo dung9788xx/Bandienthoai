@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './js/components/screens/Home';
 import Page404 from './js/components/screens/Page404';
-import ProductDetail from './js/components/screens/ProductDetail';
+import ProductDetail from './js/components/screens/productDetail/ProductDetail';
 
 function Root() {
   return (

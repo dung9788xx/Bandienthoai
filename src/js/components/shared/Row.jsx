@@ -5,6 +5,8 @@ margin: auto;
 width: 100%;
 display: flex;
 flex-wrap: wrap;
-align-items: center;
+justify-items: center;
+
+${(props) => props.style}
 `;
 export default Row;

@@ -14,8 +14,8 @@ float: left;
 color: #f2f2f2;
 text-align: center;
 padding: 14px 16px;
-text-decoration: none;
-font-size: 17px;
+text-decoration: none !important;
+font-size: 1.3rem;
 
 &:hover {
   background-color: #ddd;
@@ -33,7 +33,7 @@ const HeaderSearch = styled.input`
   width: 30%;
   text-decoration: none;
   border-radius: 5px;
-  font-size: 17px;
+  font-size: 1.3rem;
 
   &:focus {
     outline: none;
@@ -48,10 +48,10 @@ function Header() {
   };
   return (
     <Wrapper>
-      <HeaderItem style={location.pathname === '/' ? activeStyle : {}} href="/">Trang chủ</HeaderItem>
-      <HeaderItem href="#news">Điện thoại</HeaderItem>
-      <HeaderItem href="#contact">Máy tính</HeaderItem>
-      <HeaderItem href="#about">Đồng hồ</HeaderItem>
+      <HeaderItem style={location.pathname === '/' ? activeStyle : {}} href="/">TRANG CHỦ</HeaderItem>
+      <HeaderItem href="#news">APPLE IPHONE</HeaderItem>
+      <HeaderItem href="#contact">TABLET</HeaderItem>
+      <HeaderItem href="#about">PHỤ KIỆN</HeaderItem>
       <HeaderSearch placeholder="Tìm kiếm" type="text" />
     </Wrapper>
   );
