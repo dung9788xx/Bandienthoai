@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import { fetchListProduct, setListProduct } from '../../actions/product';
@@ -62,12 +63,16 @@ Home.propTypes = {
   fetchListProduct: PropTypes.any.isRequired,
   history: PropTypes.any.isRequired,
 };
-const mapDispatchToProps = (dispatch) => ({
-  fetchListProduct: (onSuccess, onFail) => dispatch(fetchListProduct(onSuccess, onFail)),
-  setListProduct: (listProduct) => dispatch(setListProduct(listProduct)),
-});
-const mapStateToProps = (state) => ({
-  listProduct: state.product.listProduct,
-});
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchListProduct: bindActionCreators(fetchListProduct, dispatch),
+    setListProduct: bindActionCreators(setListProduct, dispatch),
+  };
+}
+function mapStateToProps(state) {
+  return {
+    listProduct: state.product.listProduct,
+  };
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

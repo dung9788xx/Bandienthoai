@@ -3,6 +3,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { Carousel } from 'react-responsive-carousel';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import parse from 'html-react-parser';
 import { fetchProductDetail, setProductDetail } from '../../../actions/product';
 import Header from '../../shared/Header/Header';
@@ -31,61 +32,73 @@ onFail = () => {
 //   alert(res.message);
 }
 
-render() {
-  let renderProduct;
-  if (this.props.productDetail) {
-    renderProduct = (
-      <div>
-        <ProductName>{this.props.productDetail.name}</ProductName>
+renderProduct = () => (
+  <div>
+    <ProductName>{this.props.productDetail.name}</ProductName>
+    <hr />
+    <Row>
+      <Column>
+        <Carousel
+          style={{
+            display: 'flex',
+          }}
+          showThumbs
+          interval={2000}
+          infiniteLoop
+          autoPlay
+          statusFormatter={() => ''}
+        >
+          {this.props.productDetail.images.length > 0
+            ? this.props.productDetail.images.map((image) => (
+              <Image key={image.id} alt="" src={image} />
+            )) : <Image alt="" src={images.productIcon} />}
+        </Carousel>
+      </Column>
+      <Column>
+        <PromotionBox price={this.props.productDetail.price} />
+        <Button>
+          <Text fontSize={1.7}>
+            Mua ngay
+          </Text>
+          <span>
+            Giao hàng tận nơi hoặc nhận tại siêu thị
+          </span>
+        </Button>
+      </Column>
+    </Row>
+    <Row>
+      <Column width={100}>
+        <MarginTop top={1} />
         <hr />
-        <Row>
-          <Column>
-            <Carousel
-              showThumbs
-              interval={2000}
-              infiniteLoop
-              autoPlay
-              statusFormatter={() => ''}
-            >
-              {this.props.productDetail.images.length > 0
-                ? this.props.productDetail.images.map((image) => (
-                  <Image key={image.id} alt="" src={image} />
-                )) : <Image alt="" src={images.productIcon} />}
-            </Carousel>
-          </Column>
-          <Column>
-            <PromotionBox price={this.props.productDetail.price} />
-            <Button>
-              <Text fontSize={1.7}>
-                Mua ngay
-              </Text>
-              <span>
-                Giao hàng tận nơi hoặc nhận tại siêu thị
-              </span>
-            </Button>
-          </Column>
-        </Row>
-        <Row>
-          <Column width={100}>
-            <MarginTop top={1} />
-            <hr />
-            <Text fontSize={1.7}>
-              {parse(this.props.productDetail.description)}
-            </Text>
-          </Column>
-        </Row>
-      </div>
-    );
-  } else {
-    renderProduct = <Spinner animation="border" variant="success" />;
-  }
+        <Text fontSize={1.7}>
+          {parse(this.props.productDetail.description)}
+        </Text>
+      </Column>
+    </Row>
+  </div>
+);
+
+renderLoading = () => (
+  <Spinner
+    style={{
+      width: '10em',
+      height: '10em',
+      marginTop: '20em',
+      marginLeft: '40%',
+    }}
+    animation="border"
+    variant="success"
+  />
+)
+
+render() {
   return (
     <Wrapper>
       <div>
         <Header />
       </div>
       <Container>
-        {renderProduct}
+        {this.props.productDetail ? this.renderProduct() : this.renderLoading()}
       </Container>
     </Wrapper>
   );
@@ -102,13 +115,16 @@ ProductDetail.propTypes = {
   fetchProductDetail: PropTypes.any.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchProductDetail: (id, onSuccess, onFail) => (
-    dispatch(fetchProductDetail(id, onSuccess, onFail))),
-  setProductDetail: (product) => dispatch(setProductDetail(product)),
-});
-const mapStateToProps = (state) => ({
-  productDetail: state.product.productDetail,
-});
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchProductDetail: bindActionCreators(fetchProductDetail, dispatch),
+    setProductDetail: bindActionCreators(setProductDetail, dispatch),
+  };
+}
+function mapStateToProps(state) {
+  return {
+    productDetail: state.product.productDetail,
+  };
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
+import * as images from '../../../images';
 
 const Wrapper = styled.div`
 overflow: hidden;
@@ -39,20 +40,57 @@ const HeaderSearch = styled.input`
     outline: none;
   }
 `;
+const FloatingButton = styled.div`
+  position: fixed;
+  bottom: 3rem;
+  cursor: pointer;
+  right: 1rem;
+`;
+const Image = styled.img`
+height: 4rem;
+width: 4rem;
+`;
 
 function Header() {
+  const [isShowScroll, setShowScroll] = useState(false);
+  const ref = useRef(null);
   const location = useLocation();
   const activeStyle = {
     backgroundColor: '#ddd',
     color: ' black',
   };
+  useEffect(() => {
+    document.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        setShowScroll(true);
+      } else {
+        setShowScroll(false);
+      }
+    });
+  }, []);
+
+  const scrollButton = () => (
+    <FloatingButton>
+      <Image
+        alt=""
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+        }}
+        src={images.toTopIcon}
+      />
+    </FloatingButton>
+  );
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <HeaderItem style={location.pathname === '/' ? activeStyle : {}} href="/">TRANG CHỦ</HeaderItem>
       <HeaderItem href="#news">APPLE IPHONE</HeaderItem>
       <HeaderItem href="#contact">TABLET</HeaderItem>
       <HeaderItem href="#about">PHỤ KIỆN</HeaderItem>
       <HeaderSearch placeholder="Tìm kiếm" type="text" />
+      {isShowScroll && scrollButton()}
     </Wrapper>
   );
 }
