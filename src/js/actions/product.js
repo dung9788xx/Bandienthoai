@@ -1,5 +1,5 @@
-import { SET_LIST_PRODUCT, SET_PRODUCT_DETAIL } from '../constanst/actionConstanst';
-import { LIST_PRODUCT, PRODUCT_DETAIL } from '../constanst/apiConstanst';
+import { SET_LIST_PRODUCT, SET_PRODUCT_DETAIL } from '../constants/actionConstants';
+import { LIST_PRODUCT, PRODUCT_DETAIL } from '../constants/apiConstants';
 import callApi from '../service/callApi';
 
 export const fetchListProduct = (onSuccess, onFail) => () => callApi(LIST_PRODUCT, 'GET', null, onSuccess, onFail);

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
-import * as images from '../../../images';
+import images from '../../images';
 
 const Wrapper = styled.div`
 overflow: hidden;
@@ -14,7 +14,7 @@ const HeaderItem = styled.a`
 float: left;
 color: #f2f2f2;
 text-align: center;
-padding: 14px 16px;
+padding: 1em 1em;
 text-decoration: none !important;
 font-size: 1.3rem;
 
@@ -27,13 +27,13 @@ const HeaderSearch = styled.input`
   float: left;
   color: black;
   text-align: center;
-  padding: 14px 16px;
-  margin-top: 5px;
+  padding: 1em 1em;
+  margin-top: 0.5em;
   margin-left: 5%;
-  height: 5px;
+  height: 0.5em;
   width: 30%;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 0.5em;
   font-size: 1.3rem;
 
   &:focus {

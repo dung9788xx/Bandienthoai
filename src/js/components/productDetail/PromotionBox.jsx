@@ -7,7 +7,7 @@ import {
   Text,
   PriceBanner,
   PriceBannerRounded,
-} from './ProductDetailStyle';
+} from '../../container/productDetail/ProductDetailStyle';
 
 const Wrapper = styled.div`
   font-size: 1.5em;

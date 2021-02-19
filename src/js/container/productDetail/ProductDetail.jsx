@@ -1,23 +1,22 @@
 import React from 'react';
 import Spinner from 'react-bootstrap/Spinner';
-import { Carousel } from 'react-responsive-carousel';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import parse from 'html-react-parser';
-import { fetchProductDetail, setProductDetail } from '../../../actions/product';
-import Header from '../../shared/Header/Header';
-import * as images from '../../../images';
+import { fetchProductDetail, setProductDetail } from '../../actions/product';
+import Header from '../../components/header/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Row from '../../shared/Row';
-import Column from '../../shared/Column';
-import '../../../../App.css';
+import Row from '../../components/common/Row';
+import Column from '../../components/common/Column';
+import '../../../App.css';
 
 import {
   Wrapper, Container, ProductName, MarginTop,
-  Text, Button, Image,
+  Text, Button,
 } from './ProductDetailStyle';
-import PromotionBox from './PromotionBox';
+import PromotionBox from '../../components/productDetail/PromotionBox';
+import ImageCarousel from '../../components/productDetail/ImageCarousel';
 
 class ProductDetail extends React.Component {
   componentDidMount() {
@@ -38,21 +37,7 @@ renderProduct = () => (
     <hr />
     <Row>
       <Column>
-        <Carousel
-          style={{
-            display: 'flex',
-          }}
-          showThumbs
-          interval={2000}
-          infiniteLoop
-          autoPlay
-          statusFormatter={() => ''}
-        >
-          {this.props.productDetail.images.length > 0
-            ? this.props.productDetail.images.map((image) => (
-              <Image key={image.id} alt="" src={image} />
-            )) : <Image alt="" src={images.productIcon} />}
-        </Carousel>
+        <ImageCarousel images={this.props.productDetail.images} />
       </Column>
       <Column>
         <PromotionBox price={this.props.productDetail.price} />
