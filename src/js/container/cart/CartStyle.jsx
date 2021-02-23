@@ -6,6 +6,6 @@ export const Wrapper = styled.div`
 `;
 export const Container = styled.div`
   margin: auto;
-  width: 70%;
+  width: 60%;
   padding: 2em;
 `;
