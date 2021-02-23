@@ -1,4 +1,4 @@
-import { SET_LIST_PRODUCT, SET_PRODUCT_DETAIL } from '../constanst/actionConstanst';
+import { SET_LIST_PRODUCT, SET_PRODUCT_DETAIL } from '../constants/actionConstants';
 
 const intState = {
   listProduct: [],
