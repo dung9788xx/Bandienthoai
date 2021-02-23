@@ -9,7 +9,6 @@ import Header from '../../components/header/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from '../../components/common/Row';
 import Column from '../../components/common/Column';
-import '../../../App.css';
 
 import {
   Wrapper, Container, ProductName, MarginTop,

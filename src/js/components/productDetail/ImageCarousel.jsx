@@ -28,7 +28,7 @@ function ImageCarousel(props) {
       >
         {props.images.length > 0
           ? props.images.map((image) => (
-            <Image key={image.id} alt="" src={image} />
+            <Image key={image} alt="" src={image} />
           )) : <Image alt="" src={images.productDetail.productDetailDefaultIcon} />}
       </Carousel>
     </Wrapper>

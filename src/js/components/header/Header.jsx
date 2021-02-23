@@ -1,55 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import images from '../../images';
 
-const Wrapper = styled.div`
-overflow: hidden;
-margin: 0;
-padding: 0;
-padding-left: 10%;
-background-color: #333;
-`;
-const HeaderItem = styled.a`
-float: left;
-color: #f2f2f2;
-text-align: center;
-padding: 1em 1em;
-text-decoration: none !important;
-font-size: 1.3rem;
-
-&:hover {
-  background-color: #ddd;
-  color: black;
-}
-`;
-const HeaderSearch = styled.input`
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 1em 1em;
-  margin-top: 0.5em;
-  margin-left: 5%;
-  height: 0.5em;
-  width: 30%;
-  text-decoration: none;
-  border-radius: 0.5em;
-  font-size: 1.3rem;
-
-  &:focus {
-    outline: none;
-  }
-`;
-const FloatingButton = styled.div`
-  position: fixed;
-  bottom: 3rem;
-  cursor: pointer;
-  right: 1rem;
-`;
-const Image = styled.img`
-height: 4rem;
-width: 4rem;
-`;
+import {
+  Wrapper, FloatingButton, Image, HeaderItem, HeaderSearch, HeaderImage,
+} from './HeaderStyle';
 
 function Header() {
   const [isShowScroll, setShowScroll] = useState(false);
@@ -79,7 +34,7 @@ function Header() {
             behavior: 'smooth',
           });
         }}
-        src={images.toTopIcon}
+        src={images.header.toTopIcon}
       />
     </FloatingButton>
   );
@@ -90,6 +45,13 @@ function Header() {
       <HeaderItem href="#contact">TABLET</HeaderItem>
       <HeaderItem href="#about">PHỤ KIỆN</HeaderItem>
       <HeaderSearch placeholder="Tìm kiếm" type="text" />
+      <a href="/cart"> <HeaderImage
+        onClick={() => {
+        }}
+        src={images.header.cartIcon}
+      />
+      </a>
+
       {isShowScroll && scrollButton()}
     </Wrapper>
   );

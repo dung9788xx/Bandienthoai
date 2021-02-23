@@ -8,6 +8,8 @@ display: flex;
 flex-wrap: wrap;
 justify-content: center;
 align-items: center;
+padding-left: 5em;
+padding-right: 5em;
 
 &: after {
   content: '';
