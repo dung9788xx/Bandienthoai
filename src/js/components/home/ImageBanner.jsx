@@ -41,8 +41,8 @@ function ImageBanner(props) {
       <Carousel
         responsive={responsive}
         autoPlaySpeed={2000}
-        infinite={true}
-        autoPlay={true}
+        infinite
+        autoPlay
       >
         {props.images.map((image) => (
           <Image key={image.id} alt="" src={image.image} />

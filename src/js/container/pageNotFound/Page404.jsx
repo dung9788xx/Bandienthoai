@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   height: 100vh;
 
 `;
-
 function Page404() {
   return (
     <Wrapper>
@@ -17,5 +16,4 @@ function Page404() {
     </Wrapper>
   );
 }
-
 export default Page404;
