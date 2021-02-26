@@ -24,7 +24,7 @@ onFail = () => {
 renderCart = () => (
   <div>
     {this.props.listProduct.map((item) => (
-      <Item item={item} />
+      <Item key={item.id} item={item} />
     ))}
   </div>
 );
